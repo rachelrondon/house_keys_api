@@ -31,3 +31,5 @@ CREATE TABLE roommates (
   age INTEGER,
   wallet INTEGER
 );
+
+COMMIT;
