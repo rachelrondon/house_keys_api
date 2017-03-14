@@ -6,10 +6,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joekitaj/house_keys_api.git"
+  },
   "author": "Joe Kitaj, Tim Frankie",
   "license": "ISC",
-
+  "bugs": {
+    "url": "https://github.com/joekitaj/house_keys_api/issues"
+  },
+  "homepage": "https://github.com/joekitaj/house_keys_api#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.1",
