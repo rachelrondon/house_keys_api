@@ -21,11 +21,11 @@ User.create = (user) => {
   );
 };
 
-User.findByUsername = (username) => {
+User.findByUserId = (id) => {
   return db.one(`
     SELECT * FROM users
-    WHERE username = $1;`,
-    [username]
+    WHERE id = $1;`,
+    [id]
   );
 };
 
