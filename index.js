@@ -10,3 +10,5 @@ app.listen(PORT, () => console.log('Server listening on port', PORT));
 app.use(logger('dev'));
 
 app.use(require('./resources'));
+
+module.exports = app;

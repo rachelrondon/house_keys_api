@@ -9,7 +9,7 @@ describe('Users', () => {
     .get('/users/1')
     .end((err, results) => {
       expect(results.statusCode).to.equal(200);
-      expect(results.body).to.be.an.instanceOf(Array);
+      expect(results.body).to.be.an.instanceOf(Object);
       done();
     });
   })
