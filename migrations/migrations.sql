@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS compatible;
 DROP TABLE IF EXISTS roommates;
 DROP TABLE IF EXISTS apartments;
-DROP TABLE IF EXISTS users
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id BIGSERIAL PRIMARY KEY,
@@ -19,7 +19,8 @@ CREATE TABLE apartments (
   address VARCHAR(255) NOT NULL,
   rent INTEGER,
   description VARCHAR(255) NOT NULL,
-  photo VARCHAR(255) NOT NULL
+  photo VARCHAR(255) NOT NULL,
+  user_id INTEGER NOT NULL REFERENCES users(id)
 );
 
 CREATE TABLE roommates (
@@ -29,7 +30,8 @@ CREATE TABLE roommates (
   dishes INTEGER,
   toliet_paper INTEGER,
   age INTEGER,
-  wallet INTEGER
+  wallet INTEGER,
+  user_id INTEGER NOT NULL REFERENCES users(id)
 );
 
 COMMIT;
