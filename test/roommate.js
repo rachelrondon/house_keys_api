@@ -30,8 +30,13 @@ describe('Roommate', () => {
     console.log('tempUser:', tempUser.id);
     Roommate
     .createRM({
+<<<<<<< HEAD
       gender: 1,
       smoker: 2,
+=======
+      gender: 'true',
+      smoker: 'true',
+>>>>>>> 07c24debc2dbfb54792a31312ec909c018bf98ab
       sleep:  2,
       dishes: 2,
       toliet_paper: 1,
@@ -46,10 +51,10 @@ describe('Roommate', () => {
     });
   });
 
-  it('GET  /roommates/:id/showRM should return a stauts code of 200 and should be an array', (done) => {
+  it('GET  /roommates/ should return a stauts code of 200 and should be an array', (done) => {
     // console.log('apartment_data:', apt_record);
     request(app)
-    .get(`/roommates/${tempUser.id}/showRM`)
+    .get(`/roommates/`)
     .end((err, results) => {
       expect(results.statusCode).to.equal(200);
       expect(results.body).to.be.an.instanceOf(Array);

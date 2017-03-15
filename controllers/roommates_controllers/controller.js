@@ -18,7 +18,7 @@ controller.createRM = (req, res) => {
 
 controller.rmShow = (req, res) => {
   Roommate
-  .findByRMId(req.params.id)
+  .findAll()
   .then((data) => {
     res.json(data)
   })

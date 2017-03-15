@@ -29,13 +29,8 @@ Roommate.createRM = (roommate) => {
   ]);
 };
 
-Roommate.findByRMId = (user_id) => {
-  return db.manyOrNone(`
-    SELECT *
-    FROM roommates
-    WHERE user_id = $1`,
-    [user_id]
-  );
+Roommate.findAll = () => {
+  return db.manyOrNone(`SELECT * FROM roommates`);
 };
 
 module.exports = Roommate;
