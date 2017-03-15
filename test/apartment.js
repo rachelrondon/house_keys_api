@@ -34,7 +34,7 @@ describe('Apartments', () => {
   });
 
   before((done) => {
-    console.log('tempUser:', tempUser.id);
+    // console.log('tempUser:', tempUser.id);
     Apartment
     .createApt({
       address: 'Fartville USA',
@@ -50,10 +50,10 @@ describe('Apartments', () => {
     });
   });
 
-  it('GET  /apartments/:id/showApt should return a stauts code of 200 and should be an array', (done) => {
+  it('GET  /apartments/ should return a stauts code of 200 and should be an array', (done) => {
     // console.log('apartment_data:', apt_record);
     request(app)
-    .get(`/apartments/${tempUser.id}/showApt`)
+    .get(`/apartments/`)
     .end((err, results) => {
       expect(results.statusCode).to.equal(200);
       expect(results.body).to.be.an.instanceOf(Array);
@@ -63,7 +63,7 @@ describe('Apartments', () => {
 
   it('POST /apartments/:id/newApt should return a 201 stauts code and should give us back a newly created object', (done) => {
     request(app)
-    .post(`/apartments/${tempUser.id}/newApt`)
+    .post(`/apartments/new`)
     .send({
       apartment:{
         address: '33 Salem St',

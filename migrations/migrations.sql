@@ -24,7 +24,7 @@ CREATE TABLE apartments (
 
 CREATE TABLE roommates (
   gender INTEGER,
-  smoker BOOLEAN,
+  smoker INTEGER,
   sleep INTEGER,
   dishes INTEGER,
   toliet_paper INTEGER,
