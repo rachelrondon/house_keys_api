@@ -1,4 +1,3 @@
-
 // Allows for connection to database
 const pgp = require('pg-promise')();
 
