@@ -3,8 +3,8 @@ const bcrypt = require('bcryptjs');
 
 let Apartment = {};
 
-Apartment.create = (apartment) => {
-  console.log('creating apartments', apartment)
+Apartment.createApt = (apartment) => {
+  // console.log('creating apartments', apartment)
   return db.one(`
     INSERT INTO apartments
     (address, rent, description, photo, user_id)
@@ -19,7 +19,7 @@ Apartment.create = (apartment) => {
   ]);
 };
 
-Apartment.findAll = (user_id) => {
+Apartment.findByAptId = (user_id) => {
   return db.manyOrNone(`
     SELECT *
     FROM apartments
@@ -27,5 +27,6 @@ Apartment.findAll = (user_id) => {
     [user_id]
   );
 };
+
 
 module.exports = Apartment;

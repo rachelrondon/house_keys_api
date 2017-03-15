@@ -18,7 +18,7 @@ describe('Users', () => {
       password_digest: 'password'
     })
     .then((user_record) => {
-      console.log('user_record:',user_record)
+      // console.log('user_record:',user_record)
       tempUser = user_record[0];
       done();
     });

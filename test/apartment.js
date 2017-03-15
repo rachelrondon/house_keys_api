@@ -28,14 +28,15 @@ describe('Apartments', () => {
     })
     .then((user_record) => {
       // console.log('user_record:',user_record)
-      tempUser = user_record;
+      tempUser = user_record[0];
       done();
     });
   });
 
   before((done) => {
+    console.log('tempUser:', tempUser.id);
     Apartment
-    .create({
+    .createApt({
       address: 'Fartville USA',
       rent: 1000,
       description: 'smells like farts',
@@ -49,34 +50,34 @@ describe('Apartments', () => {
     });
   });
 
-  it('GET  /users/:id/apartments should return a stauts code of 200 and should be an array', (done) => {
+  it('GET  /apartments/:id/showApt should return a stauts code of 200 and should be an array', (done) => {
     // console.log('apartment_data:', apt_record);
     request(app)
-    .get(`/users/${tempUser.id}/apartments`)
+    .get(`/apartments/${tempUser.id}/showApt`)
     .end((err, results) => {
       expect(results.statusCode).to.equal(200);
-      expect(results.body).to.be.an.instanceOf(Object);
+      expect(results.body).to.be.an.instanceOf(Array);
       done();
     });
   });
 
-  // it('POST /apartments/new should return a 201 stauts code and should give us back a newly created object', (done) => {
-  //   request(app)
-  //   .post('/apartments/new')
-  //   .send({
-  //     book:{
-  //       address: '33 Salem St',
-  //       rent: 2000,
-  //       description: 'nice place',
-  //       photo: 'fviruvnriberiv',
-  //       user_id: "{bcyrpt value}"
-  //     }
-  //   })
-  //   .end((err, results) => {
-  //     expect(results.statusCode).to.equal(201);
-  //     expect(results.body).to.be.an.instanceOf(Object);
-  //     expect(results.body).to.not.be.an.instanceOf(Array);
-  //     done();
-  //   });
-  // });
+  it('POST /apartments/:id/newApt should return a 201 stauts code and should give us back a newly created object', (done) => {
+    request(app)
+    .post(`/apartments/${tempUser.id}/newApt`)
+    .send({
+      apartment:{
+        address: '33 Salem St',
+        rent: 2000,
+        description: 'nice place',
+        photo: 'fviruvnriberiv',
+        user_id: tempUser.id
+      }
+    })
+    .end((err, results) => {
+      expect(results.statusCode).to.equal(201);
+      expect(results.body).to.be.an.instanceOf(Object);
+      expect(results.body).to.not.be.an.instanceOf(Array);
+      done();
+    });
+  });
 })

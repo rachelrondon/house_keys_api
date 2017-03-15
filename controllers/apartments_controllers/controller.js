@@ -1,7 +1,24 @@
 const controller = {};
 const Apartment = require('../../models/apartment');
 
-controller.aptDashboard= (req, res) => {
+// controller for post model
+controller.createApt = (req, res) => {
+  Apartment
+  .createApt(req.body.apartment)
+  .then((pet) => {
+    res
+    .sendStatus(201)
+    .json(pet);
+  })
+  .catch((err) => {
+    res
+    .status(400)
+    .json(err);
+  });
+};
+
+// controller for get model of all apts
+controller.aptShow = (req, res) => {
   Apartment
   .findByAptId(req.params.id)
   .then((data) => {
