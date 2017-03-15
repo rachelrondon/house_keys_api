@@ -23,7 +23,7 @@ CREATE TABLE apartments (
 );
 
 CREATE TABLE roommates (
-  gender BOOLEAN,
+  gender INTEGER,
   smoker BOOLEAN,
   sleep INTEGER,
   dishes INTEGER,
