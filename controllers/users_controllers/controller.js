@@ -6,7 +6,7 @@ controller.dashboard = (req, res) => {
   .findByUserId(req.params.id)
   .then((data) => {
     res.json(data)
-    console.log(req.params.id);
+    // console.log('UserId:', req.params.id);
   })
   .catch(err => console.log('ERROR:', err));
 }

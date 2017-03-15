@@ -4,7 +4,7 @@
   "description": "API for House Keys app",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -12,12 +12,9 @@
   },
   "author": "Joe Kitaj, Tim Frankie",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/joekitaj/house_keys_api/issues"
-  },
   "homepage": "https://github.com/joekitaj/house_keys_api#readme",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.2",
