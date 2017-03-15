@@ -4,10 +4,10 @@ const Roommate = require('../../models/roommate');
 controller.createRM = (req, res) => {
   Roommate
   .createRM(req.body.roommate)
-  .then((pet) => {
+  .then((roommate) => {
     res
     .sendStatus(201)
-    .json(pet);
+    .json(roommate);
   })
   .catch((err) => {
     res
