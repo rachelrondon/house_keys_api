@@ -31,7 +31,7 @@ describe('Roommate', () => {
     Roommate
     .createRM({
       gender: 1,
-      smoker: 'true',
+      smoker: 2,
       sleep:  2,
       dishes: 2,
       toliet_paper: 1,
@@ -63,7 +63,7 @@ describe('Roommate', () => {
     .send({
       roommate:{
         gender: 2,
-        smoker: 'false',
+        smoker: 1,
         sleep:  1,
         dishes: 3,
         toliet_paper: 2,
