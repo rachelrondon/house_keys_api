@@ -1,74 +1,31 @@
-const request = require('supertest');
-const expect = require('chai').expect;
-const app = require('../index');
-// const User = require('./models/user');
+const db = require('../config/db');
+const bcrypt = require('bcryptjs');
 
-// build and require Apartments.create
-// make 'before' for users
-// build and require User.create
-// OR get rid of ref requirement in migration
+let Apartment = {};
 
-describe('Apartments', () => {
+Apartment.create = (apartment) => {
+  console.log('creating apartments', apartment)
+  return db.one(`
+    INSERT INTO apartments
+    (address, rent, description, photo, user_id)
+    VALUES
+    ($1, $2, $3, $4, $5) RETURNING *
+  `, [
+    apartment.address,
+    apartment.rent,
+    apartment.description,
+    apartment.photo,
+    apartment.user_id
+  ]);
+};
 
-  let apartment;
-  let user;
+Apartment.findAll = (user_id) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM apartments
+    WHERE user_id = $1`,
+    [user_id]
+  );
+};
 
-  // before model testing of Apartments.create
-  before((done) => {
-    User
-    .create({
-      first_name: 'Jon',
-      last_name: 'Troy',
-      username: 'JTroy',
-      email: 'jTroy@aol.com',
-      password_digest: 'hf74knccdd'
-    })
-    .then((user_data) => {
-      user = user = data;
-      done();
-    });
-
-    Apartments
-    .create({
-      address: 'Fartville USA',
-      rent: 1000,
-      description: 'smells liek farts',
-      photo: 'url photo',
-      user_id: 1
-    })
-    .then((apartment_data) => {
-      apartment = apartment_data;
-      done();
-    });
-  });
-
-  it('GET  /apartments should return a stauts code of 200 and should be an array', (done) => {
-    request(app)
-    .get('/apartments')
-    .end((err, results) => {
-      expect(results.statusCode).to.equal(200);
-      expect(results.body).to.be.an.instanceOf(Array);
-      done();
-    });
-  })
-
-  it('POST /apartments/new should return a 201 stauts code and should give us back a newly created object', (done) => {
-    request(app)
-    .post('/apartments/new')
-    .send({
-      book:{
-        address: '33 Salem St',
-        rent: 2000,
-        description: 'nice place',
-        photo: 'fviruvnriberiv',
-        user_id: "{bcyrpt value}"
-      }
-    })
-    .end((err, results) => {
-      expect(results.statusCode).to.equal(201);
-      expect(results.body).to.be.an.instanceOf(Object);
-      expect(results.body).to.not.be.an.instanceOf(Array);
-      done();
-    });
-  });
-})
+module.exports = Apartment;

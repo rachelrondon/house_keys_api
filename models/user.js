@@ -1,22 +1,24 @@
 const db = require('../config/db');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 let User = {};
 
 User.create = (user) => {
-  const password = bcrypt.hashSync(user.password, 10);
+  // console.log('creating', user)
+  // const password = bcrypt.hashSync(user.password, 10);
   return db.query(`
     INSERT INTO users
     (first_name, last_name, username, email, password_digest)
     VALUES
-    ($1, $2, $3, $4, $5)`,
+    ($1, $2, $3, $4, $5) RETURNING *
+    `,
     [
       user.first_name,
       user.last_name,
       user.username,
       user.email,
-      password
+      user.password_digest
     ]
   );
 };
