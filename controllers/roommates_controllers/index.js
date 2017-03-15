@@ -3,6 +3,6 @@ const controller = require('./controller');
 
 router.get('/', controller.rmShow);
 
-router.post('/:id/newRM', controller.createRM);
+router.post('/new', controller.createRM);
 
 module.exports = router;
