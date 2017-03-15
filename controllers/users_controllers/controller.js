@@ -18,9 +18,10 @@ controller.newUser = (req, res) => {
 controller.create = (req, res) => {
   User
   .create(req.body.user)
-  .then((data) => {
-    console.log(data)
-    res.redirect('/login');
+  .then((user) => {
+    res
+    .status(201)
+    .json(user)
   })
   .catch((err) => {
       res

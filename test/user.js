@@ -34,4 +34,23 @@ describe('Users', () => {
       done();
     });
   })
+
+  it('POST /users/new should return a status code of 201 and should be an object', (done) => {
+    request(app)
+    .post(`/users/`)
+    .send({
+      user: {
+        first_name: 'John',
+        last_name: 'Lennon',
+        username: 'givepeaceachance',
+        email: 'JohnAndYoko@hotmail.com',
+        password_digest: 'password'
+      }
+    })
+    .end((err, results) => {
+      expect(results.statusCode).to.equal(201);
+      expect(results.body).to.be.an.instanceOf(Object);
+      done();
+    })
+  })
 })

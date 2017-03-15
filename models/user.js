@@ -1,7 +1,5 @@
 const db = require('../config/db');
 
-const bcrypt = require('bcryptjs');
-
 let User = {};
 
 User.create = (user) => {
