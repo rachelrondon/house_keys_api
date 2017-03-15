@@ -30,13 +30,8 @@ describe('Roommate', () => {
     console.log('tempUser:', tempUser.id);
     Roommate
     .createRM({
-<<<<<<< HEAD
       gender: 1,
       smoker: 2,
-=======
-      gender: 'true',
-      smoker: 'true',
->>>>>>> 07c24debc2dbfb54792a31312ec909c018bf98ab
       sleep:  2,
       dishes: 2,
       toliet_paper: 1,
@@ -64,7 +59,7 @@ describe('Roommate', () => {
 
   it('POST /roommate/:id/newRM should return a 201 stauts code and should give us back a newly created object', (done) => {
     request(app)
-    .post(`/roommates/${tempUser.id}/newRM`)
+    .post(`/roommates/new`)
     .send({
       roommate:{
         gender: 2,
