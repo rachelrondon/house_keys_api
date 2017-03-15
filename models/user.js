@@ -31,4 +31,12 @@ User.findByUserId = (id) => {
   );
 };
 
+User.findByEmail = (email) => {
+  return db.one(`
+    SELECT * FROM users
+    WHERE email = $1;`,
+    [email]
+  );
+};
+
 module.exports = User;

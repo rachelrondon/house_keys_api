@@ -11,8 +11,35 @@ controller.dashboard = (req, res) => {
   .catch(err => console.log('ERROR:', err));
 }
 
+controller.newUser = (req, res) => {
+  res.render('new');
+}
+
+controller.create = (req, res) => {
+  User
+  .create(req.body.user)
+  .then((data) => {
+    console.log(data)
+    res.redirect('/login');
+  })
+  .catch((err) => {
+      res
+      .status(400)
+      .json(err);
+  });
+}
+
 controller.login = (req, res) => {
-  res.render('login')
+  console.log(req.body.user)
+  res.render('login');
+}
+
+controller.processLogin = (req, res) => {
+  User
+  .findByEmail(req.body.user.email)
+  .then((data) =>{
+    res.json(data)
+  })
 }
 
 module.exports = controller;
