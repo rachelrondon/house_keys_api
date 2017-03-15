@@ -19,12 +19,11 @@ Apartment.createApt = (apartment) => {
   ]);
 };
 
-Apartment.findByAptId = (user_id) => {
+Apartment.showAll = (apartments) => {
   return db.manyOrNone(`
     SELECT *
-    FROM apartments
-    WHERE user_id = $1`,
-    [user_id]
+    FROM apartments`,
+    [apartments]
   );
 };
 

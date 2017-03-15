@@ -34,7 +34,7 @@ describe('Apartments', () => {
   });
 
   before((done) => {
-    console.log('tempUser:', tempUser.id);
+    // console.log('tempUser:', tempUser.id);
     Apartment
     .createApt({
       address: 'Fartville USA',
