@@ -1,7 +1,5 @@
 const db = require('../config/db');
 
-const bcrypt = require('bcryptjs');
-
 let User = {};
 
 User.create = (user) => {
@@ -28,6 +26,14 @@ User.findByUserId = (id) => {
     SELECT * FROM users
     WHERE id = $1;`,
     [id]
+  );
+};
+
+User.findByEmail = (email) => {
+  return db.one(`
+    SELECT * FROM users
+    WHERE email = $1;`,
+    [email]
   );
 };
 

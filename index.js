@@ -6,6 +6,9 @@ const app = express();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log('Server listening on port', PORT));
