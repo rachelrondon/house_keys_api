@@ -20,7 +20,7 @@ controller.createApt = (req, res) => {
 // controller for get model of all apts
 controller.aptShow = (req, res) => {
   Apartment
-  .findByAptId(req.params.id)
+  .showAll()
   .then((data) => {
     res.json(data)
   })
