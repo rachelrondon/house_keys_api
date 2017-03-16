@@ -37,6 +37,7 @@ describe('Apartments', () => {
     // console.log('tempUser:', tempUser.id);
     Apartment
     .createApt({
+      title: 'Duplex',
       address: 'Fartville USA',
       rent: 1000,
       description: 'smells like farts',
@@ -66,6 +67,7 @@ describe('Apartments', () => {
     .post(`/apartments/new`)
     .send({
       apartment:{
+        title: 'Nice Townhouse',
         address: '33 Salem St',
         rent: 2000,
         description: 'nice place',

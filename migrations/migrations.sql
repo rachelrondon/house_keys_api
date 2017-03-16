@@ -15,6 +15,7 @@ CREATE TABLE users (
 
 CREATE TABLE apartments (
   id BIGSERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
   rent INTEGER,
   description VARCHAR(255) NOT NULL,
@@ -23,6 +24,8 @@ CREATE TABLE apartments (
 );
 
 CREATE TABLE roommates (
+  id BIGSERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
   gender INTEGER,
   smoker INTEGER,
   sleep INTEGER,
