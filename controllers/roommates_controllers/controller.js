@@ -6,7 +6,7 @@ controller.createRM = (req, res) => {
   .createRM(req.body.roommate)
   .then((roommate) => {
     res
-    .sendStatus(201)
+    .status(201)
     .json(roommate);
   })
   .catch((err) => {
