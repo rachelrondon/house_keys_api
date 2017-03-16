@@ -30,6 +30,7 @@ describe('Roommate', () => {
     console.log('tempUser:', tempUser.id);
     Roommate
     .createRM({
+      title: 'Cool Dude Looking For Cool Roommate',
       gender: 1,
       smoker: 2,
       sleep:  2,
@@ -62,6 +63,7 @@ describe('Roommate', () => {
     .post(`/roommates/new`)
     .send({
       roommate:{
+        title: 'Not a Friend Just a Roommate',
         gender: 2,
         smoker: 1,
         sleep:  1,

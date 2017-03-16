@@ -6,7 +6,8 @@ let Roommate = {};
 Roommate.createRM = (roommate) => {
   return db.one(`
     INSERT INTO roommates
-    (gender,
+    (title,
+    gender,
     smoker,
     sleep,
     dishes,
@@ -15,9 +16,10 @@ Roommate.createRM = (roommate) => {
     wallet,
     user_id)
     VALUES
-    ($1, $2, $3, $4, $5, $6, $7, $8)
+    ($1, $2, $3, $4, $5, $6, $7, $8, $9)
     RETURNING *
   `, [
+    roommate.title,
     roommate.gender,
     roommate.smoker,
     roommate.sleep,
