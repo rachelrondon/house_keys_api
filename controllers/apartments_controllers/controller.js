@@ -5,10 +5,10 @@ const Apartment = require('../../models/apartment');
 controller.createApt = (req, res) => {
   Apartment
   .createApt(req.body.apartment)
-  .then((pet) => {
+  .then((apartment) => {
     res
-    .sendStatus(201)
-    .json(pet);
+    .status(201)
+    .json(apartment);
   })
   .catch((err) => {
     res
