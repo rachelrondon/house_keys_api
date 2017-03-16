@@ -8,10 +8,6 @@ const cors = require('cors');
 app.use(cors());
 
 app.post("/users/new", (req, res) => {
-    const token = jwt.sign({hello: "world"}, "Bringo", {
-        expiresIn: "30m"
-    });
-
     res.json({token: token});
 });
 
