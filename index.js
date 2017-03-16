@@ -7,11 +7,7 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 app.use(cors());
 
-app.post("/users/new", (req, res) => {
-    res.json({token: token});
-});
-
-app.get("/restricted", (req, res) => {
+app.get("/dashboard", (req, res) => {
     jwt.verify(req.headers.authorization, "Bringo", (err, decoded) => {
         if (err) {
             res

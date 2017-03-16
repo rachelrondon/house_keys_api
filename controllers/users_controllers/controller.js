@@ -39,6 +39,7 @@ controller.processLogin = (req, res) => {
         const token = jwt.sign({hello: "world"}, "Bringo", {
             expiresIn: "30m"
           });
+        res.json({token: token});
       };
     }
   })
