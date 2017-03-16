@@ -1,5 +1,7 @@
 const controller = {};
 const User = require('../../models/user');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 controller.dashboard = (req, res) => {
   User
@@ -11,9 +13,6 @@ controller.dashboard = (req, res) => {
   .catch(err => console.log('ERROR:', err));
 }
 
-// controller.newUser = (req, res) => {
-//   res.render('new');
-// }
 
 controller.create = (req, res) => {
   User
@@ -30,16 +29,18 @@ controller.create = (req, res) => {
   });
 }
 
-controller.login = (req, res) => {
-  console.log(req.body.user)
-  res.render('login');
-}
-
 controller.processLogin = (req, res) => {
   User
   .findByEmail(req.body.user.email)
-  .then((data) =>{
-    res.json(data)
+  .then((user) =>{
+    if (user) {
+      const isAuthed = bcrypt.compareSync(req.body.user.password, user.password_digest);
+      if(isAuthed) {
+        const token = jwt.sign({hello: "world"}, "Bringo", {
+            expiresIn: "30m"
+          });
+      };
+    }
   })
 }
 
