@@ -11,9 +11,9 @@ controller.dashboard = (req, res) => {
   .catch(err => console.log('ERROR:', err));
 }
 
-controller.newUser = (req, res) => {
-  res.render('new');
-}
+// controller.newUser = (req, res) => {
+//   res.render('new');
+// }
 
 controller.create = (req, res) => {
   User

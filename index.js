@@ -2,15 +2,33 @@ require('dotenv').config({ silent: true });
 const express = require('express');
 const logger = require('morgan');
 const app = express();
+const jwt = require('jsonwebtoken');
 
 const cors = require('cors');
 app.use(cors());
 
+app.post("/users/new", (req, res) => {
+    const token = jwt.sign({hello: "world"}, "Bringo", {
+        expiresIn: "30m"
+    });
+
+    res.json({token: token});
+});
+
+app.get("/restricted", (req, res) => {
+    jwt.verify(req.headers.authorization, "Bringo", (err, decoded) => {
+        if (err) {
+            res
+            .status(401)
+            .json({error: err.message});
+        } else {
+            res.json({message: "Restricted content!"});
+        }
+    });
+});
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
-app.set('view engine', 'ejs');
-app.set('views', './views');
 
 const PORT = process.env.PORT || 8000;
 
