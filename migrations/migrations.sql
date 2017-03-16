@@ -20,7 +20,7 @@ CREATE TABLE apartments (
   rent INTEGER,
   description VARCHAR(255) NOT NULL,
   photo VARCHAR(255) NOT NULL,
-  user_id INTEGER NOT NULL REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id)
 );
 
 CREATE TABLE roommates (
@@ -33,7 +33,7 @@ CREATE TABLE roommates (
   toliet_paper INTEGER,
   age INTEGER,
   wallet INTEGER,
-  user_id INTEGER NOT NULL REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id)
 );
 
 COMMIT;
