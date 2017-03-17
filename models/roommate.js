@@ -11,7 +11,7 @@ Roommate.createRM = (roommate) => {
     smoker,
     sleep,
     dishes,
-    toliet_paper,
+    toilet_paper,
     age,
     wallet,
     user_id)
@@ -24,7 +24,7 @@ Roommate.createRM = (roommate) => {
     roommate.smoker,
     roommate.sleep,
     roommate.dishes,
-    roommate.toliet_paper,
+    roommate.toilet_paper,
     roommate.age,
     roommate.wallet,
     roommate.user_id

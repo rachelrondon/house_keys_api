@@ -30,7 +30,7 @@ CREATE TABLE roommates (
   smoker INTEGER,
   sleep INTEGER,
   dishes INTEGER,
-  toliet_paper INTEGER,
+  toilet_paper INTEGER,
   age INTEGER,
   wallet INTEGER,
   user_id INTEGER REFERENCES users(id)

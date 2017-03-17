@@ -35,7 +35,7 @@ describe('Roommate', () => {
       smoker: 2,
       sleep:  2,
       dishes: 2,
-      toliet_paper: 1,
+      toilet_paper: 1,
       age: 2,
       wallet: 1,
       user_id: tempUser.id
@@ -68,7 +68,7 @@ describe('Roommate', () => {
         smoker: 1,
         sleep:  1,
         dishes: 3,
-        toliet_paper: 2,
+        toilet_paper: 2,
         age: 1,
         wallet: 2,
         user_id: tempUser.id
