@@ -29,8 +29,8 @@ controller.create = (req, res) => {
   });
 }
 
+
 controller.processLogin = (req, res) => {
-  console.log('req.body', req.body)
   User
   .findByEmail(req.body.email)
   .then((user) =>{
@@ -38,12 +38,11 @@ controller.processLogin = (req, res) => {
       const isAuthed = bcrypt.compareSync(req.body.password, user.password_digest);
       if(isAuthed) {
         console.log('isAuthed is true')
-        // thank you Alessa for finding out that we only needed req.body not
-        // req.body.user.email
         const token = jwt.sign({email: req.body.email}, "Bringo", {
-            expiresIn: "30m"
+            expiresIn: "1y"
           });
         res.json({token: token});
+        console.log('Token:', token)
       } else {
         console.log('is Authed is false')
       }
