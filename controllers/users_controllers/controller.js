@@ -3,24 +3,19 @@ const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-controller.dashboard = (req, res) => {
-  User
-  .findByUserId(req.params.id)
-  .then((data) => {
-    res.json(data)
-    // console.log('UserId:', req.params.id);
-  })
-  .catch(err => console.log('ERROR:', err));
-}
-
-
 controller.create = (req, res) => {
   User
   .create(req.body.user)
   .then((user) => {
+    const token = jwt.sign({email: req.body.email}, "Bringo", {
+        expiresIn: "1y"
+      });
     res
     .status(201)
-    .json(user)
+    .json({
+      token: token,
+      user: user
+    })
   })
   .catch((err) => {
       res
@@ -37,12 +32,21 @@ controller.processLogin = (req, res) => {
     if (user) {
       const isAuthed = bcrypt.compareSync(req.body.password, user.password_digest);
       if(isAuthed) {
-        console.log('isAuthed is true')
+        console.log('isAuthed is true');
+        const authUser = {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+          username: user.username
+        }
         const token = jwt.sign({email: req.body.email}, "Bringo", {
             expiresIn: "1y"
           });
-        res.json({token: token});
-        console.log('Token:', token)
+        res.json({
+          token: token,
+          user: authUser
+        });
+        console.log(authUser)
       } else {
         console.log('is Authed is false')
       }

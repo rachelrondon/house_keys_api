@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 let User = {};
 
 User.create = (user) => {
-  console.log('creating', user)
   user.password_digest = bcrypt.hashSync(user.password_digest, 10);
   return db.query(`
     INSERT INTO users
