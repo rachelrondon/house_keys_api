@@ -3,17 +3,6 @@ const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-controller.dashboard = (req, res) => {
-  User
-  .findByUserId(req.params.id)
-  .then((data) => {
-    res.json(data)
-    // console.log('UserId:', req.params.id);
-  })
-  .catch(err => console.log('ERROR:', err));
-}
-
-
 controller.create = (req, res) => {
   User
   .create(req.body.user)
@@ -29,6 +18,9 @@ controller.create = (req, res) => {
   });
 }
 
+controller.processLogout = (req, res) => {
+
+}
 
 controller.processLogin = (req, res) => {
   User
@@ -37,12 +29,13 @@ controller.processLogin = (req, res) => {
     if (user) {
       const isAuthed = bcrypt.compareSync(req.body.password, user.password_digest);
       if(isAuthed) {
-        console.log('isAuthed is true')
+        console.log('isAuthed is true');
+        const authUser = user;
+        console.log(user)
         const token = jwt.sign({email: req.body.email}, "Bringo", {
             expiresIn: "1y"
           });
         res.json({token: token});
-        console.log('Token:', token)
       } else {
         console.log('is Authed is false')
       }
