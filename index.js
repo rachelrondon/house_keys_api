@@ -7,18 +7,6 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 app.use(cors());
 
-app.get("/dashboard", (req, res) => {
-    jwt.verify(req.headers.authorization, "Bringo", (err, decoded) => {
-        if (err) {
-            res
-            .status(401)
-            .json({error: err.message});
-        } else {
-            res.json({message: "Restricted content!"});
-        }
-    });
-});
-
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
