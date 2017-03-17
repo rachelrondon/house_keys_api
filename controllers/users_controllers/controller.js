@@ -12,7 +12,10 @@ controller.create = (req, res) => {
       });
     res
     .status(201)
-    .json({user, token})
+    .json({
+      token: token,
+      user: user
+    })
   })
   .catch((err) => {
       res
@@ -21,9 +24,6 @@ controller.create = (req, res) => {
   });
 }
 
-controller.processLogout = (req, res) => {
-
-}
 
 controller.processLogin = (req, res) => {
   User
@@ -33,12 +33,20 @@ controller.processLogin = (req, res) => {
       const isAuthed = bcrypt.compareSync(req.body.password, user.password_digest);
       if(isAuthed) {
         console.log('isAuthed is true');
-        const authUser = user;
-        console.log(user)
+        const authUser = {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+          username: user.username
+        }
         const token = jwt.sign({email: req.body.email}, "Bringo", {
             expiresIn: "1y"
           });
-        res.json({token: token});
+        res.json({
+          token: token,
+          user: authUser
+        });
+        console.log(authUser)
       } else {
         console.log('is Authed is false')
       }
