@@ -7,9 +7,12 @@ controller.create = (req, res) => {
   User
   .create(req.body.user)
   .then((user) => {
+    const token = jwt.sign({email: req.body.email}, "Bringo", {
+        expiresIn: "1y"
+      });
     res
     .status(201)
-    .json(user)
+    .json({user, token})
   })
   .catch((err) => {
       res
