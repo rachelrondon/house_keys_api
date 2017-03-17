@@ -26,13 +26,13 @@ CREATE TABLE apartments (
 CREATE TABLE roommates (
   id BIGSERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
-  gender INTEGER,
-  smoker INTEGER,
-  sleep INTEGER,
-  dishes INTEGER,
-  toilet_paper INTEGER,
-  age INTEGER,
-  wallet INTEGER,
+  gender VARCHAR(255) NOT NULL,
+  smoker VARCHAR(255) NOT NULL,
+  sleep VARCHAR(255) NOT NULL,
+  dishes VARCHAR(255) NOT NULL,
+  toilet_paper VARCHAR(255) NOT NULL,
+  age VARCHAR(255) NOT NULL,
+  wallet VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id)
 );
 
