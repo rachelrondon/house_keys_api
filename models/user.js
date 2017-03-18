@@ -5,7 +5,7 @@ let User = {};
 
 User.create = (user) => {
   user.password_digest = bcrypt.hashSync(user.password_digest, 10);
-  return db.query(`
+  return db.one(`
     INSERT INTO users
     (first_name, last_name, username, email, password_digest)
     VALUES

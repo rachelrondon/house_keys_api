@@ -6,22 +6,19 @@ const jwt = require('jsonwebtoken');
 controller.create = (req, res) => {
   User
   .create(req.body.user)
-  .then((user) => {
-    const token = jwt.sign({email: req.body.email}, "Bringo", {
-        expiresIn: "1y"
-      });
-    res
-    .status(201)
-    .json({
+  .then((user) =>{
+    const authUser = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      email: user.email,
+      username: user.username
+    }
+    const token = jwt.sign({email: req.body.email}, "Bringo", {expiresIn: "1y"});
+      res.json({
       token: token,
-      user: user
-    })
+      user: authUser
+    });
   })
-  .catch((err) => {
-      res
-      .status(400)
-      .json(err);
-  });
 }
 
 
