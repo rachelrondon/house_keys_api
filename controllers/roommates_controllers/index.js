@@ -2,6 +2,9 @@ const router = require('express').Router();
 const controller = require('./controller');
 
 router.get('/', controller.rmShow);
+router.post('/new', controller.createRM);
+
+
 router.get('/male', controller.male);
 router.get('/female', controller.female);
 router.get('/smoker', controller.smoker);
