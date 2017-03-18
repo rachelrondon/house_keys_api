@@ -35,4 +35,13 @@ Roommate.findAll = () => {
   return db.manyOrNone(`SELECT * FROM roommates`);
 };
 
+Roommate.findByGender = (gender) => {
+  console.log(gender);
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE gender = $1`, [gender]
+  );
+}
+
 module.exports = Roommate;
