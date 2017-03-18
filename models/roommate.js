@@ -36,12 +36,37 @@ Roommate.findAll = () => {
 };
 
 Roommate.findByGender = (gender) => {
-  console.log(gender);
+  // console.log(gender);
   return db.manyOrNone(`
     SELECT *
     FROM roommates
     WHERE gender = $1`, [gender]
   );
 }
+
+Roommate.findBySmoker = (smoker) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE smoker = $1`, [smoker]
+  );
+}
+
+Roommate.findBySleep = (sleep) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE sleep = $1`, [sleep]
+  );
+}
+
+Roommate.findByAge = (age) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE sleep = $1`, [age]
+  );
+}
+
 
 module.exports = Roommate;
