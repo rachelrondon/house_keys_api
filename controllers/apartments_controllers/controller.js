@@ -4,7 +4,7 @@ const Apartment = require('../../models/apartment');
 // controller for post model
 controller.createApt = (req, res) => {
   Apartment
-  .createApt(req.body.apartment)
+  .createApt(req.body.apartment, req.body.latLong)
   .then((apartment) => {
     res
     .status(201)
