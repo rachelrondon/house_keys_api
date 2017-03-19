@@ -17,6 +17,7 @@ CREATE TABLE apartments (
   id BIGSERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
+  latLong VARCHAR(255) NOT NULL,
   rent INTEGER,
   description VARCHAR(255) NOT NULL,
   photo VARCHAR(255) NOT NULL,
