@@ -63,7 +63,7 @@ controller.rmDishesSinkFull = (req, res) => {
 
 controller.rmDishesEveryDay = (req, res) => {
   Roommate
-  .findByDishes('Everday')
+  .findByDishes('Everyday')
   .then((data) => {
     res.json(data)
   })

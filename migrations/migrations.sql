@@ -9,7 +9,6 @@ CREATE TABLE users (
   first_name VARCHAR(255) NOT NULL,
   last_name VARCHAR(255) NOT NULL,
   username VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
   password_digest VARCHAR(255) NOT NULL
 );
 
@@ -21,7 +20,6 @@ CREATE TABLE apartments (
   rent INTEGER,
   description VARCHAR(255) NOT NULL,
   photo VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id)
 );
 
@@ -35,7 +33,6 @@ CREATE TABLE roommates (
   toilet_paper VARCHAR(255) NOT NULL,
   age VARCHAR(255) NOT NULL,
   wallet VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL,
   user_id INTEGER REFERENCES users(id)
 );
 
