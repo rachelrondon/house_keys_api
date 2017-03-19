@@ -36,7 +36,6 @@ Roommate.findAll = () => {
 };
 
 Roommate.findByGender = (gender) => {
-  // console.log(gender);
   return db.manyOrNone(`
     SELECT *
     FROM roommates
@@ -52,6 +51,14 @@ Roommate.findBySmoker = (smoker) => {
   );
 }
 
+Roommate.findByDishes = (dishes) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE dishes = $1`, [dishes]
+  );
+}
+
 Roommate.findBySleep = (sleep) => {
   return db.manyOrNone(`
     SELECT *
@@ -64,9 +71,25 @@ Roommate.findByAge = (age) => {
   return db.manyOrNone(`
     SELECT *
     FROM roommates
-    WHERE sleep = $1`, [age]
+    WHERE age = $1`, [age]
   );
 }
 
+
+Roommate.findByToiletPaper = (toilet_paper) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE toilet_paper = $1`, [toilet_paper]
+  );
+}
+
+Roommate.findByWallet = (wallet) => {
+  return db.manyOrNone(`
+    SELECT *
+    FROM roommates
+    WHERE wallet = $1`, [wallet]
+  );
+}
 
 module.exports = Roommate;
